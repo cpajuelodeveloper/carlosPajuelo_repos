@@ -41,9 +41,9 @@ export class OrganizationsController {
     @Body() payload: CreateOrganizationDto,
   ): Promise<void> {
     const instance = <Organization>{ ...payload };
-    await this.findById(id);
+    await this.service.findById(id);
     instance.id_organization = id;
-    await this.service.upsert(instance);
+    await this.service.update(instance);
   }
 
   @Delete(':id')

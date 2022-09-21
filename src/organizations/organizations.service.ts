@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { InsertResult } from 'typeorm';
+import { UpdateResult } from 'typeorm';
 import { Organization } from './organization.entity';
 import { OrganizationsRepository } from './organizations.repository';
 
@@ -23,8 +23,11 @@ export class OrganizationsService {
     return instance;
   }
 
-  upsert(instance: Organization): Promise<InsertResult> {
-    return this.repository.upsertInstance(instance);
+  update(instance: Organization): Promise<UpdateResult> {
+    return this.repository.update(
+      { id_organization: instance.id_organization },
+      instance,
+    );
   }
 
   async removeById(id: number): Promise<void> {

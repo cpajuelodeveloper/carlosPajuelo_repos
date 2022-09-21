@@ -1,4 +1,4 @@
-import { InsertResult, Repository } from 'typeorm';
+import { InsertResult, Repository, UpdateResult } from 'typeorm';
 
 import { CustomRepository } from '../core/typeorm-ex.decorator';
 import { Organization } from './organization.entity';
@@ -17,9 +17,5 @@ export class OrganizationsRepository extends Repository<Organization> {
     const newInstance = this.create(instance);
     await this.save(newInstance);
     return newInstance;
-  }
-
-  upsertInstance(instance: Organization): Promise<InsertResult> {
-    return this.upsert(instance, ['id_organization']);
   }
 }
