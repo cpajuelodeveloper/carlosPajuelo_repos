@@ -8,11 +8,12 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { OrganizationsService } from './organizations.service';
 import { Organization } from './organization.entity';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
-
+@ApiTags('Organizations')
 @Controller('organizations')
 export class OrganizationsController {
   constructor(private service: OrganizationsService) {}
