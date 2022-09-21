@@ -8,7 +8,7 @@ export class OrganizationsRepository extends Repository<Organization> {
   findById(id: number): Promise<Organization> {
     return this.findOne({
       where: {
-        id_organization: id,
+        idOrganization: id,
       },
     });
   }

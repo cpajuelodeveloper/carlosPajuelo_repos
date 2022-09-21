@@ -42,7 +42,7 @@ export class OrganizationsController {
   ): Promise<void> {
     const instance = <Organization>{ ...payload };
     await this.service.findById(id);
-    instance.id_organization = id;
+    instance.idOrganization = id;
     await this.service.update(instance);
   }
 

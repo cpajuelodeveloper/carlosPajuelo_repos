@@ -2,8 +2,12 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('organization')
 export class Organization {
-  @PrimaryGeneratedColumn()
-  id_organization: number;
+  constructor(partial: Partial<Organization>) {
+    Object.assign(this, partial);
+  }
+
+  @PrimaryGeneratedColumn('increment', { name: 'id_organization' })
+  idOrganization: number;
 
   @Column({ nullable: false })
   name: string;

@@ -1,31 +1,31 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateResult } from 'typeorm';
-import { Organization } from './organization.entity';
-import { OrganizationsRepository } from './organizations.repository';
+import { Repository } from './repository.entity';
+import { RepositoriesRepository } from './repositories.repository';
 
 @Injectable()
-export class OrganizationsService {
-  constructor(private repository: OrganizationsRepository) {}
+export class RepositoriesService {
+  constructor(private repository: RepositoriesRepository) {}
 
-  create(instance: Organization): Promise<Organization> {
+  create(instance: Repository): Promise<Repository> {
     return this.repository.createInstance(instance);
   }
 
-  find(): Promise<Organization[]> {
+  find(): Promise<Repository[]> {
     return this.repository.find();
   }
 
-  async findById(id: number): Promise<Organization> {
+  async findById(id: number): Promise<Repository> {
     const instance = await this.repository.findById(id);
     if (!instance) {
-      throw new NotFoundException(Organization.name);
+      throw new NotFoundException(Repository.name);
     }
     return instance;
   }
 
-  update(instance: Organization): Promise<UpdateResult> {
+  update(instance: Repository): Promise<UpdateResult> {
     return this.repository.update(
-      { idOrganization: instance.idOrganization },
+      { idRepository: instance.idRepository },
       instance,
     );
   }

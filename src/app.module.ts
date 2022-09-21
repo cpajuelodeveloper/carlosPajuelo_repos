@@ -8,6 +8,8 @@ import databaseConfig from './config/database.config';
 import { OrganizationsModule } from './organizations/organization.module';
 import { DataSource } from 'typeorm';
 import { TYPEORM_CONFIG } from './config/constants';
+import { TribesModule } from './tribes/tribe.module';
+import { RepositoriesModule } from './reporsitories/repository.module';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { TYPEORM_CONFIG } from './config/constants';
       load: [databaseConfig],
     }),
     OrganizationsModule,
+    TribesModule,
+    RepositoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
