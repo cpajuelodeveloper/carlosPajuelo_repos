@@ -2,10 +2,13 @@ import { EntityRepository, InsertResult, Repository } from 'typeorm';
 
 import { Organization } from '../organization.entity';
 
-@EntityRepository(Organization)
 export class OrganizationsRepository extends Repository<Organization> {
   findById(id: number): Promise<Organization> {
-    return this.findOne({ id });
+    return this.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   async createInstance(instance: Organization): Promise<Organization> {
