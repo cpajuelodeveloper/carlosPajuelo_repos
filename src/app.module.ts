@@ -5,7 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TYPEORM_CONFIG } from './config/constants';
-import { databaseConfig } from './config/database.config';
+import databaseConfig from './config/database.config';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),

@@ -2,12 +2,12 @@ import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { join } from 'path';
 
-function typeormModuleOptions(): TypeOrmModuleOptions {
+export default registerAs('database', (): TypeOrmModuleOptions => {
   const dbUrl = new URL(process.env.COCKROACH_DB_URL);
   const routingId = dbUrl.searchParams.get("options");
   dbUrl.searchParams.delete("options");
   return {
-    type: "cockroachdb",
+    type: 'cockroachdb',
     url: dbUrl.toString(),
     ssl: true,
     extra: {
@@ -16,10 +16,12 @@ function typeormModuleOptions(): TypeOrmModuleOptions {
     entities: [join(__dirname, '../**/**/*entity{.ts,.js}')],
     autoLoadEntities: true,
     synchronize: false,
-    logging: true,
+    logging: process.env.DATABASE_LOGGING === 'true',
     logger: 'file',
+    migrationsTableName: 'migrations',
+    migrations: ['src/migrations/*.ts'],
+    cli: {
+      migrationsDir: 'src/migrations',
+    },
   };
-}
-export const databaseConfig = registerAs('database', () => ({
-  config: typeormModuleOptions(),
-}));
+});
