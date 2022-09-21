@@ -6,19 +6,20 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TYPEORM_CONFIG } from './config/constants';
 import databaseConfig from './config/database.config';
+import { OrganizationsModule } from './organizations/organization.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }),
+  imports: [
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => config.get<TypeOrmModuleOptions>(TYPEORM_CONFIG)
+      useFactory: (config: ConfigService) =>
+        config.get<TypeOrmModuleOptions>(TYPEORM_CONFIG),
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [
-        databaseConfig
-      ]
+      load: [databaseConfig],
     }),
+    OrganizationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
