@@ -11,6 +11,8 @@ export class CreateOrganization1663741203174 implements MigrationInterface {
             type: 'int',
             isPrimary: true,
             isNullable: false,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'name',

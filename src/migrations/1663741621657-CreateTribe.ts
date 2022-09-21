@@ -16,6 +16,8 @@ export class CreateTribe1663741621657 implements MigrationInterface {
             type: 'int',
             isPrimary: true,
             isNullable: false,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'id_organization',
