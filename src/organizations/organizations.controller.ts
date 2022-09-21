@@ -41,7 +41,7 @@ export class OrganizationsController {
   ): Promise<void> {
     const instance = <Organization>{ ...payload };
     await this.findById(id);
-    instance.id = id;
+    instance.id_organization = id;
     await this.service.upsert(instance);
   }
 

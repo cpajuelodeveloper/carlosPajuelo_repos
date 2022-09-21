@@ -1,5 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { join } from 'path';
 
 export default registerAs('database', (): TypeOrmModuleOptions => {
   const dbUrl = new URL(process.env.COCKROACH_DB_URL);
@@ -12,12 +13,9 @@ export default registerAs('database', (): TypeOrmModuleOptions => {
     extra: {
       options: routingId,
     },
-    entities: [`${__dirname}/**/**/**.entity{.ts,.js}`],
-    autoLoadEntities: true,
+    entities: [join(__dirname, '../**/*.entity{.js,.ts}')],
     synchronize: false,
     logging: process.env.DATABASE_LOGGING === 'true',
     logger: 'file',
-    migrationsTableName: 'migrations',
-    migrations: [`${__dirname}/**/migrations/**/*{.ts,.js}`],
   };
 });

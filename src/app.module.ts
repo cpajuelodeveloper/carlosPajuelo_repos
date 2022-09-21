@@ -4,10 +4,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TYPEORM_CONFIG } from './config/constants';
 import databaseConfig from './config/database.config';
 import { OrganizationsModule } from './organizations/organization.module';
 import { DataSource } from 'typeorm';
+import { TYPEORM_CONFIG } from './config/constants';
 
 @Module({
   imports: [

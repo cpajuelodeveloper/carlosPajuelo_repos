@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmExModule } from '../core/typeorm-ex.module';
 
 import { OrganizationsController } from './organizations.controller';
 import { OrganizationsService } from './organizations.service';
-import { OrganizationsRepository } from './repository/organizations.repository';
+import { OrganizationsRepository } from './organizations.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([OrganizationsRepository])],
+  imports: [TypeOrmExModule.forCustomRepository([OrganizationsRepository])],
   controllers: [OrganizationsController],
   providers: [OrganizationsService],
   exports: [OrganizationsService],

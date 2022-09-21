@@ -1,12 +1,14 @@
-import { EntityRepository, InsertResult, Repository } from 'typeorm';
+import { InsertResult, Repository } from 'typeorm';
 
-import { Organization } from '../organization.entity';
+import { CustomRepository } from '../core/typeorm-ex.decorator';
+import { Organization } from './organization.entity';
 
+@CustomRepository(Organization)
 export class OrganizationsRepository extends Repository<Organization> {
   findById(id: number): Promise<Organization> {
     return this.findOne({
       where: {
-        id,
+        id_organization: id,
       },
     });
   }
@@ -18,6 +20,6 @@ export class OrganizationsRepository extends Repository<Organization> {
   }
 
   upsertInstance(instance: Organization): Promise<InsertResult> {
-    return this.upsert(instance, ['id']);
+    return this.upsert(instance, ['id_organization']);
   }
 }
