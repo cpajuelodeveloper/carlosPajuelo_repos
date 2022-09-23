@@ -9,7 +9,7 @@ import { OrganizationsModule } from './organizations/organization.module';
 import { DataSource } from 'typeorm';
 import { TYPEORM_CONFIG } from './config/constants';
 import { TribesModule } from './tribes/tribe.module';
-import { RepositoriesModule } from './reporsitories/repository.module';
+import { RepositoriesModule } from './repositories/repositories.module';
 
 @Module({
   imports: [
