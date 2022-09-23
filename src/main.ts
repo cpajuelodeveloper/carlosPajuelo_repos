@@ -7,6 +7,7 @@ import { initSwagger } from './app.swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+  app.setGlobalPrefix('api');
   app.enableCors();
   initSwagger(app);
   await app.listen(3000);
