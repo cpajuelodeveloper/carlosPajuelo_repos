@@ -7,22 +7,21 @@ import {
   RelationId,
 } from 'typeorm';
 
-import { Tribe } from '../tribes/tribe.entity';
+import { Repository } from 'src/repositories/repository.entity';
 
-@Entity('metric')
+@Entity('metrics')
 export class Metric {
   constructor(partial: Partial<Metric>) {
     Object.assign(this, partial);
   }
 
-  @Column({ name: 'id_repository' })
   @RelationId((instance: Metric) => instance.repository)
-  @PrimaryColumn()
+  @PrimaryColumn({ name: 'id_repository' })
   idRepository: number;
 
-  @ManyToOne(() => Tribe)
+  @ManyToOne(() => Repository)
   @JoinColumn({ name: 'id_repository' })
-  repository: Tribe;
+  repository: Repository;
 
   @Column({ nullable: false })
   coverage: number;

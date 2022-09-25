@@ -1,8 +1,10 @@
+import { Metric } from 'src/metrics/metric.entity';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   RelationId,
 } from 'typeorm';
@@ -33,4 +35,7 @@ export class Repository {
   @Column({ name: 'id_tribe' })
   @RelationId((instance: Repository) => instance.tribe)
   idTribe: number;
+
+  @OneToMany(() => Metric, (metric) => metric.repository)
+  metrics: Metric[];
 }
