@@ -18,7 +18,7 @@ export class TribesService {
   async findById(id: number): Promise<Tribe> {
     const instance = await this.repository.findById(id);
     if (!instance) {
-      throw new NotFoundException(Tribe.name);
+      throw new NotFoundException('La Tribu no se encuentra registrada');
     }
     return instance;
   }
