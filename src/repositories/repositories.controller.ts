@@ -1,7 +1,7 @@
 import { Controller, Get, Header, Param, StreamableFile } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Parser } from 'json2csv';
-import { TribesService } from 'src/tribes/tribes.service';
+import { TribesService } from '../tribes/tribes.service';
 
 import { RepositoryMetrics } from '../common/interfaces/repository-metrics.interface';
 import { MINIMUN_COVERAGE } from '../config/constants';

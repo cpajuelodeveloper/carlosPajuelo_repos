@@ -7,7 +7,7 @@ import {
   RelationId,
 } from 'typeorm';
 
-import { Repository } from 'src/repositories/repository.entity';
+import { Repository } from '../repositories/repository.entity';
 
 @Entity('metrics')
 export class Metric {

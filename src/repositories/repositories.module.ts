@@ -4,7 +4,7 @@ import { TypeOrmExModule } from '../core/typeorm-ex.module';
 import { RepositoriesController } from './repositories.controller';
 import { RepositoriesService } from './repositories.service';
 import { RepositoriesRepository } from './repositories.repository';
-import { TribesModule } from 'src/tribes/tribe.module';
+import { TribesModule } from '../tribes/tribe.module';
 
 @Module({
   imports: [

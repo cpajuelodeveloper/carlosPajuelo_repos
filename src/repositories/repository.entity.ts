@@ -1,4 +1,3 @@
-import { Metric } from 'src/metrics/metric.entity';
 import {
   Column,
   Entity,
@@ -10,6 +9,7 @@ import {
 } from 'typeorm';
 
 import { Tribe } from '../tribes/tribe.entity';
+import { Metric } from '../metrics/metric.entity';
 
 @Entity('repository')
 export class Repository {
