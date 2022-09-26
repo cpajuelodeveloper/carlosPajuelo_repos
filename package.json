@@ -78,7 +78,16 @@
       ".+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "**/*.(t|j)s",
+      "!**/*.module.(t|j)s",
+      "!**/*.repository.(t|j)s",
+      "!**/*.entity.(t|j)s"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/main.ts",
+      "src/app.swagger.ts",
+      "src/config/",
+      "src/migrations/"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"

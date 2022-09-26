@@ -1,9 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import * as pjson from '../package.json';
 
 describe('AppController', () => {
   let appController: AppController;
+  const mockStatusResponse = {
+    name: pjson['name'],
+    version: pjson['version'],
+  };
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -14,9 +20,14 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('AppController', () => {
+    it('should return server status', () => {
+      expect(appController.getStatus()).toEqual(
+        expect.objectContaining({
+          name: mockStatusResponse.name,
+          version: mockStatusResponse.version,
+        }),
+      );
     });
   });
 });
