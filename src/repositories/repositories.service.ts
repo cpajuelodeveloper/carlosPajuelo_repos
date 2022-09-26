@@ -71,6 +71,8 @@ export class RepositoriesService {
       .addSelect('metrics.bugs', 'bugs')
       .addSelect('metrics.vulnerabilities', 'vulnerabilities')
       .addSelect('metrics.hotspot', 'hotspots')
+      .addSelect('Repository.state', 'verificationState')
+      .addSelect('Repository.status', 'state')
       .innerJoin('Repository.metrics', 'metrics')
       .innerJoin('Repository.tribe', 'tribe')
       .innerJoin('tribe.organization', 'organization')
@@ -80,7 +82,7 @@ export class RepositoriesService {
       .andWhere('metrics.coverage >= :coverage', {
         coverage: minimunCoverage,
       })
-      .getRawMany();
+      .getRawMany<RepositoryMetrics>();
     if (!metrics.length) {
       throw new NotFoundException(
         'La Tribu no tiene repositorios que cumplan con la cobertura necesaria',

@@ -5,7 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import databaseConfig from './config/database.config';
-import { OrganizationsModule } from './organizations/organization.module';
+import { OrganizationsModule } from './organizations/organizations.module';
 import { DataSource } from 'typeorm';
 import { TYPEORM_CONFIG } from './config/constants';
 import { TribesModule } from './tribes/tribe.module';
@@ -18,10 +18,8 @@ import { RepositoriesModule } from './repositories/repositories.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
         configService.get<TypeOrmModuleOptions>(TYPEORM_CONFIG),
-      dataSourceFactory: async (options) => {
-        const dataSource = await new DataSource(options).initialize();
-        return dataSource;
-      },
+      dataSourceFactory: async (options) =>
+        new DataSource(options).initialize(),
     }),
     ConfigModule.forRoot({
       isGlobal: true,
