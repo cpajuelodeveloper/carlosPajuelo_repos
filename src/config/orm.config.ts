@@ -1,5 +1,4 @@
 import { ConfigModule } from '@nestjs/config';
-import { join } from 'path';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import dbConfiguration from './database.config';
 

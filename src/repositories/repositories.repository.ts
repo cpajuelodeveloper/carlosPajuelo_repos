@@ -1,4 +1,4 @@
-import { InsertResult, Repository as _Repository, UpdateResult } from 'typeorm';
+import { Repository as _Repository } from 'typeorm';
 
 import { CustomRepository } from '../core/typeorm-ex.decorator';
 import { Repository } from './repository.entity';

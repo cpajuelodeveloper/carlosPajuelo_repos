@@ -58,7 +58,7 @@ export class RepositoriesService {
 
   async getRepositoryMetrics(
     idTribe: number,
-    minimunCoverage: number = 0,
+    minimunCoverage = 0,
   ): Promise<RepositoryMetrics[]> {
     const metrics = await this.repository
       .createQueryBuilder()
