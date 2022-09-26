@@ -45,14 +45,20 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Api docs
+
+```
+http://localhost:3000/api/swagger
+```
+
 ## Test
 
 ```bash
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
+# test watch mode
+$ npm run test:watch
 
 # test coverage
 $ npm run test:cov
